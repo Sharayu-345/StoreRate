@@ -1,0 +1,98 @@
+### StoreRate API — REST Client requests
+### Install the free "REST Client" extension by Huachao Mao in VS Code first.
+### Then just click "Send Request" above each block below.
+
+@baseUrl = http://localhost:5000/api
+@token = paste_your_token_here_after_login
+
+### 1. Login — Admin
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@storerate.com",
+  "password": "Admin@1234"
+}
+
+### 1b. Login — Store Owner
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "owner@storerate.com",
+  "password": "Owner@1234"
+}
+
+### 1c. Login — Normal User
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "moresharayu345@gmail.com",
+  "password": "Sharayu@345"
+}
+
+### 2. Signup (normal user)
+POST {{baseUrl}}/auth/signup
+Content-Type: application/json
+
+{
+  "name": "A Name At Least Twenty Characters",
+  "email": "newuser@example.com",
+  "password": "Passw0rd!",
+  "address": "123 Test Street"
+}
+
+### 3. Admin Dashboard Stats
+GET {{baseUrl}}/admin/dashboard
+Authorization: Bearer {{token}}
+
+### 4. List Users (with filters)
+GET {{baseUrl}}/admin/users?name=&email=&address=&role=&sortBy=name&order=asc
+Authorization: Bearer {{token}}
+
+### 5. Add User
+POST {{baseUrl}}/admin/users
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "A Name At Least Twenty Characters",
+  "email": "newadmin@example.com",
+  "password": "Passw0rd!",
+  "address": "123 Test Street",
+  "role": "admin"
+}
+
+### 6. List Stores (admin view)
+GET {{baseUrl}}/admin/stores?name=&email=&address=&sortBy=name&order=asc
+Authorization: Bearer {{token}}
+
+### 7. Add Store
+POST {{baseUrl}}/admin/stores
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Sample New Store",
+  "email": "samplenew@example.com",
+  "address": "456 Market Road, Mumbai",
+  "ownerId": null
+}
+
+### 8. List Stores (user view, with search)
+GET {{baseUrl}}/stores?name=&address=
+Authorization: Bearer {{token}}
+
+### 9. Submit / Update Rating (Zebra Bakery, id 2)
+POST {{baseUrl}}/stores/2/ratings
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "rating": 4
+}
+
+### 10. Owner Dashboard
+GET {{baseUrl}}/owner/dashboard
+Authorization: Bearer {{token}}
