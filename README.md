@@ -1,4 +1,4 @@
-# 🏪 Store Rating Platform
+#  Store Rating Platform
 
 A production-quality **Store Rating Platform** web application built with React.js, Node.js, Express.js, and MySQL.
 
