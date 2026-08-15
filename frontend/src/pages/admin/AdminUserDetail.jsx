@@ -49,9 +49,9 @@ export default function AdminUserDetail() {
             <div>
               <dt className="text-xs uppercase text-slate-400">Store rating</dt>
               <dd className="mt-1 flex items-center gap-2">
-                <StarRating value={detail.storeRating || 0} readOnly size="text-sm" />
+                <StarRating value={detail.average_rating || 0} readOnly size="text-sm" />
                 <span className="text-xs text-slate-400">
-                  ({detail.storeRating ? detail.storeRating.toFixed(1) : '—'})
+                  ({detail.average_rating ? Number(detail.average_rating).toFixed(1) : '—'})
                 </span>
               </dd>
             </div>
